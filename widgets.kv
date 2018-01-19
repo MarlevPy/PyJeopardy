@@ -1,0 +1,204 @@
+#:kivy 1.10.0
+
+<AddPointsPopup>:
+    title: 'Add Points'
+    size_hint: 0.5, 0.5
+    auto_dismiss: False
+
+<AnswerButton>:
+    size_hint: None, None
+    id: self.id
+
+<AnswerLabel>:
+    font_color: '561f60'
+    font_size: 60
+    answer_text_size: 42
+
+<AnswerLayout>:
+    anchor_x: 'right'
+    anchor_y: 'bottom'
+    padding: 0, 0, 10, 10
+
+<AnswerScreen>:
+    FloatLayout:
+        size_hint: 1,1
+        QALayout:
+            QABox:
+                AnswerLabel:
+                    text: '[color={font_color}][b]{answer_label}[/b]\n[size={answer_text_size}][i]{answer_text}[/i][/size][/color]'.format(font_color=self.font_color, answer_label=root.answer_label, answer_text=root.answer_text, answer_text_size=self.answer_text_size)
+                    halign: 'center'
+                QAImage:
+        HeaderLayout:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 0.4, 0.2
+                padding: 0, 50, 50, 0
+                Label:
+                    text: root.title
+                    font_size: 60
+                    halign: 'right'
+                    text_size: self.size
+                Label:
+                    text: ''.join([str(root.point), ' p'])
+                    font_size: 75
+                    halign: 'right'
+                    text_size: self.size
+        BackLayout:
+            BackButton:
+        AnswerLayout:
+            SetPointsButton:
+                size_hint: None, None
+                on_press: app.add_points_popup.open()
+
+<BackButton>:
+    size_hint: None, None
+
+<BackLayout>:
+    anchor_x: 'left'
+    anchor_y: 'bottom'
+    padding: 10, 0, 0, 10
+
+<CategoryGrid>:
+    cols: 3
+    padding: dp(100), dp(10), dp(100), dp(50)
+    spacing: 5
+
+<GridButton>:
+    font_size: 70
+    background_normal: ''
+    background_color: (1, 1, 1, 0.5)
+    markup: True
+    font_color: '812e91'
+
+<GridLabelButton>:
+    font_size: 50
+    background_normal: ''
+    background_color: (1, 0.75, 0.29, 0.9)
+    markup: True
+    font_color: '561f60'
+
+<HeaderLayout>:
+    anchor_x: 'right'
+    anchor_y: 'top'
+
+<MainLayout>:
+    orientation: 'vertical'
+
+<PlayerLabel>:
+    font_size: 40
+    size_hint_y: 0.3
+
+<PlayersScoreLayout>:
+    orientation: 'vertical'
+    ScoreLabel:
+        id: score_label
+        text: str(root.player.points)
+    PlayerLabel:
+        text: root.player.name
+
+<PopupBaseLayout>:
+    orientation: 'vertical'
+    spacing: 15
+
+<PopupPlayerLayout>:
+    orientation: 'horizontal'
+    spacing: 15
+
+<PopupPlayerContent>:
+    orientation: 'vertical'
+    padding: 0, 20, 0, 0
+    PlayerLabel:
+        text: root.player.name
+    ScoreLabel:
+        id: score_label
+        text: str(root.player.points)
+    Button:
+        text: '+' + str(root.point)
+        font_size: 50
+        on_press: root.add_points(root.player, root.point)
+    Button:
+        text: '-' + str(root.point)
+        font_size: 50
+        on_press: root.sub_points(root.player, root.point)
+
+<PopupCloseButton>:
+    text: 'Close'
+    size_hint: 0.4, 1
+
+<PopupBackButton>:
+    text: 'Back to Main'
+    size_hint: 0.4, 1
+
+<PopupButtonLayout>:
+    size_hint_y: 0.15
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'bottom'
+        PopupCloseButton:
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        PopupBackButton:
+
+<QABox>:
+    orientation: 'vertical'
+    size_hint: 1, 1
+    padding: 250, 200, 250, 50
+    spacing: 50
+
+<QAImage>:
+    source: 'media/mat.jpg'
+    allow_stretch: True
+    keep_ratio: True
+
+<QALayout>:
+    anchor_x: 'center'
+    anchor_y: 'center'
+
+<QuestionLabel>:
+    text_size: 1300, 700
+    font_size: 50
+    markup: True
+    halign: 'left'
+    valign: 'middle'
+
+<QuestionScreen>:
+    FloatLayout:
+        size_hint: 1, 1
+        QALayout:
+            QABox:
+                QuestionLabel:
+                    text: '[color={font_color}]{question_text}[/color]'.format(font_color='561f60', question_text=root.question_text)
+                QAImage:
+        HeaderLayout:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 0.4, 0.2
+                padding: 0, 50, 50, 0
+                Label:
+                    text: root.title
+                    font_size: 60
+                    halign: 'right'
+                    text_size: self.size
+                Label:
+                    text: ''.join([str(root.point), ' p'])
+                    font_size: 75
+                    halign: 'right'
+                    text_size: self.size
+        BackLayout:
+            BackButton:
+        AnswerLayout:
+            AnswerButton:
+
+<ScoreLabel>:
+    font_size: 80
+
+<ScoreLayout>:
+    orientation: 'horizontal'
+    size_hint_y: 0.3
+    padding: 100, 50, 100, 50
+
+<WallpaperImage>:
+    source: 'media/wallpaper.jpg'
+    allow_stretch: True
+    keep_ratio: False
