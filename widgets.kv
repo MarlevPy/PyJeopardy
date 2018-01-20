@@ -25,7 +25,7 @@
         QALayout:
             QABox:
                 AnswerLabel:
-                    text: '[color={font_color}][b]{answer_label}[/b]\n[size={answer_text_size}][i]{answer_text}[/i][/size][/color]'.format(font_color=self.font_color, answer_label=root.answer_label, answer_text=root.answer_text, answer_text_size=self.answer_text_size)
+                    text: '[color={font_color}][b]{answer}[/b]\n[size={answer_text_size}][i]{answer_description}[/i][/size][/color]'.format(font_color=self.font_color, answer=root.answer, answer_description=root.answer_description, answer_text_size=self.answer_text_size)
                     halign: 'center'
                 QAImage:
         HeaderLayout:
