@@ -1,7 +1,5 @@
-#!/usr/bin/python3
-# -*- coding: iso-8859-1 -*-
-
 from kivy.app import App
+from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
@@ -15,6 +13,8 @@ from kivy.uix.popup import Popup
 from kivy.graphics import Color, Rectangle
 from kivy.uix.screenmanager import Screen
 from kivy.properties import StringProperty, BooleanProperty, NumericProperty, ObjectProperty
+
+Builder.load_file('widgets.kv')
 
 
 class AddPointsPopup(Popup):
@@ -34,8 +34,8 @@ class AnswerButton(ButtonBehavior, Image):
 
 
 class AnswerScreen(Screen):
-    answer_label = StringProperty()
-    answer_text = StringProperty()
+    answer = StringProperty()
+    answer_description = StringProperty()
     title = StringProperty()
     category = StringProperty()
     point = NumericProperty()
